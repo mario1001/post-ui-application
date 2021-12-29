@@ -1,0 +1,26 @@
+<div class="content" role="search-posts">
+  <div class="d-flex justify-content-center" *ngIf="!readyToShow">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <table class="table" *ngIf="readyToShow">
+    <caption>JSON placeholder API posts obtained</caption>
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">ID</th>
+        <th scope="col">title</th>
+        <th scope="col">body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts">
+        <th scope="row">{{post.userId}}</th>
+        <td>{{post.id}}</td>
+        <td>{{post.title}}</td>
+        <td>{{post.body}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
