@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  title = 'posts-ui-application';
+  title = 'post-ui-application';
 
   ngOnInit(): void {}
 

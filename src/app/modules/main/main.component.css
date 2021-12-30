@@ -1,0 +1,23 @@
+h4 {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.general_info {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn-outline-primary {
+  color: #212529;
+  border-color: #212529;
+}
+
+.btn-check:active + .btn-outline-primary,
+.btn-outline-primary:active,
+.btn-check:hover + .btn-outline-primary,
+.btn-outline-primary:hover {
+  background-color: #212529;
+  border-color: #212529;
+  color: #fff;
+}

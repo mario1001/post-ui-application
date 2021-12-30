@@ -1,1 +1,35 @@
-<p>create-post works!</p>
+
+<form class="full-form" role="search-posts" [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
+  <h4>Create a new post</h4>
+  <div class="mb-3">
+    <label for="titleInput" class="form-label">Title</label>
+    <input type="text" class="form-control" id="titleInput" formControlName="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="bodyInput" class="form-label">Body</label>
+    <input type="text" class="form-control" id="bodyInput" formControlName="body" required>
+  </div>
+  <div class="mb-3">
+    <label for="userInput" class="form-label">User ID</label>
+    <input type="number" class="form-control" id="userInput" formControlName="userId">
+  </div>
+  <button type="submit" [disabled]="!createPostForm.valid" class="btn btn-dark">Create</button>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="operationCompleted" tabindex="-1" aria-labelledby="operationCompletedLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="operationCompletedLabel">Creation completed!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Creation post operation was successfully completed</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@ export class PostService {
   private postsUrl = 'https://jsonplaceholder.typicode.com';  // Static URL to web api
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=UTF-8' })
   };
 
   constructor(private http: HttpClient) {}
@@ -25,6 +25,27 @@ export class PostService {
         tap(_ => this.log('fetched posts')),
         catchError(this.handleError<Post[]>('getPosts', []))
       );
+  }
+
+  /**
+   * POST: add a new post to the server (faked as documented in API)
+   */
+  addPost(post: Post): Observable<Post> {
+    console.log(post);
+    return this.http.post<Post>(this.postsUrl + '/posts', post, this.httpOptions).pipe(
+      tap((newPost: Post) => this.log(`added new post w/ id=${newPost.id}`)),
+      catchError(this.handleError<Post>('addPost'))
+    );
+  }
+
+  /**
+   * PUT: update an existing post (should contain the ID for identifying and faked again as documented in API)
+   */
+   updatePost(post: Post): Observable<Post> {
+    return this.http.post<Post>(this.postsUrl + `/posts/${post.id}`, post, this.httpOptions).pipe(
+      tap((newPost: Post) => this.log(`update existing post w/ id=${newPost.id}`)),
+      catchError(this.handleError<Post>('updatePost'))
+    );
   }
 
   /**

@@ -23,14 +23,14 @@ describe('MainComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'posts-ui-application'`, () => {
+  it(`should have as title 'post-ui-application'`, () => {
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('posts-ui-application');
+    expect(app.title).toEqual('post-ui-application');
   });
 
   it('should render title', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('posts-ui-application is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('post-ui-application is running!');
   });
 });

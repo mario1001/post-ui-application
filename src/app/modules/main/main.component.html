@@ -1,11 +1,22 @@
 <div class="content" role="main">
-  <span>{{ title }} is running!</span>
+  <h2>Angular app for fetching Posts (core v13.1.0)</h2>
+  <h4>{{ title }} is running!</h4>
 
-  <h2>Angular application for fetching Posts (v13.1.0)</h2>
-  <h4>This application is using web components for exposing the different main pages. </h4>
+  <p class="general_info">
+    This is a simple frontend application for managing posts with an specific API.
+    Using web components (noted as <strong>view-*</strong> in the project) for exposing the different pages.<br><br>
 
-  <p>Here are the buttons for routing to the different screens:</p>
+    For now there is no need for a backend/middleware application (no dealing with complex formats neither data reestructuring).
+    Build with a domain module architecture along with components, services and models inside them. Not using for now the shared module because it is a simple project.
+    There is no environment vars also for the same reason, the API endpoint is served externally without any possible changes.<br><br>
 
+    We are not using Angular material here, not very experienced on it but instead using ng-bootstrap (v5) along its features.
+    The application have its own router along with one specific main module for now.<br><br>
+
+    Another last important note is that the project for now contains css instead of scss/sass tools, maybe it's really a great idea to integrate them instead.
+  </p>
+
+  <p>Following functionality for the little application:</p>
   <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
     <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
     <label class="btn btn-outline-primary" for="btncheck1" routerLink="/posts">Display posts</label>
