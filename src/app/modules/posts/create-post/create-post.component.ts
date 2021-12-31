@@ -27,6 +27,6 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(post: Post) {
-    this.postService.addPost(post).subscribe(data => this.postService.data.emit(data));
+    this.postService.addPost(post).subscribe(data => this.postService.dataReflected.emit(data));
   }
 }

@@ -25,4 +25,17 @@ export class PostsComponent implements OnInit {
     });
   }
 
+  filterPostsByUser(value: string) {
+    this.readyToShow = false;
+
+    if (value == null || value == '') {
+      // Just show without filter (any post as initialization function)
+      return this.ngOnInit();
+    }
+
+    this.postService.getPostsByUser(Number(value)).subscribe(data => {
+      this.posts = data;
+      this.readyToShow = true;
+    })
+  }
 }

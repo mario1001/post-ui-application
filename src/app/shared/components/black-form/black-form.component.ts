@@ -33,17 +33,23 @@ export class BlackFormComponent implements OnInit {
     Object.keys(this.postForm.controls).forEach(key => {
       this.inputs.push(key);
     });
+
+    // Business logic here is just getting the data reflected in events and show them
+    // within bootstrap modal in screen, after that just update the form with that values (consistency)
+    this.postService.dataReflected.subscribe(data => {
+      console.log(data);
+      this.data = data;
+
+      const element = document.getElementById('dataReflected') as HTMLElement;
+      const myModal = new Modal(element);
+      myModal.show();
+
+      const {id, ...reflectedData} = this.data;
+      this.postForm.setValue(reflectedData);
+    });
   }
 
   onSubmit() {
     this.formSubmitted.emit(<Post> this.postForm.value);
-    this.postService.data.subscribe(data => {
-      this.data = data;
-      console.log(this.data);
-
-      const element = document.getElementById('operationCompleted') as HTMLElement;
-      const myModal = new Modal(element);
-      myModal.show();
-    });
   }
 }

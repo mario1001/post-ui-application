@@ -17,16 +17,34 @@ export class PostService {
   };
 
   // This data will be up when requests are made for modal as information provided by API
-  data = new EventEmitter<Post>();
+  dataReflected = new EventEmitter<Post>();
 
   constructor(private http: HttpClient) {}
 
   /** GET posts from the server */
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.postsUrl + '/posts')
+    return this.http.get<Post[]>(this.postsUrl + '/posts', this.httpOptions)
       .pipe(
         tap(_ => this.log('fetched posts')),
         catchError(this.handleError<Post[]>('getPosts', []))
+      );
+  }
+
+  /** GET posts with user ID filter from the server */
+  getPostsByUser(userId: number): Observable<Post[]> {
+    return this.http.get<Post[]>(this.postsUrl + `/posts?userId=${userId}`, this.httpOptions)
+      .pipe(
+        tap(_ => this.log('fetched posts with user filter')),
+        catchError(this.handleError<Post[]>('getPosts', []))
+      );
+  }
+
+  /** GET post from the server (providing ID) */
+  getPost(postId: number): Observable<Post> {
+    return this.http.get<Post>(this.postsUrl + `/posts/${postId}`, this.httpOptions)
+      .pipe(
+        tap(_ => this.log('fetch post')),
+        catchError(this.handleError<Post>('getPost'))
       );
   }
 
@@ -34,7 +52,6 @@ export class PostService {
    * POST: add a new post to the server (faked as documented in API)
    */
   addPost(post: Post): Observable<Post> {
-    console.log(post);
     return this.http.post<Post>(this.postsUrl + '/posts', post, this.httpOptions).pipe(
       tap((newPost: Post) => this.log(`added new post w/ id=${newPost.id}`)),
       catchError(this.handleError<Post>('addPost'))
@@ -45,7 +62,7 @@ export class PostService {
    * PUT: update an existing post (should contain the ID for identifying and faked again as documented in API)
    */
    updatePost(post: Post): Observable<Post> {
-    return this.http.post<Post>(this.postsUrl + `/posts/${post.id}`, post, this.httpOptions).pipe(
+    return this.http.put<Post>(this.postsUrl + `/posts/${post.id}`, post, this.httpOptions).pipe(
       tap((newPost: Post) => this.log(`update existing post w/ id=${newPost.id}`)),
       catchError(this.handleError<Post>('updatePost'))
     );

@@ -4,23 +4,38 @@
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-  <table class="table" *ngIf="readyToShow">
-    <caption>JSON placeholder API posts obtained</caption>
-    <thead>
-      <tr>
-        <th scope="col">User</th>
-        <th scope="col">ID</th>
-        <th scope="col">title</th>
-        <th scope="col">body</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let post of posts">
-        <th scope="row">{{post.userId}}</th>
-        <td>{{post.id}}</td>
-        <td>{{post.title}}</td>
-        <td>{{post.body}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <ng-container *ngIf="readyToShow">
+    <div class="row mb-3">
+      <div class="col-auto">
+        <label for="userFilter" class="col-sm-2 col-form-label">User</label>
+      </div>
+      <div class="col-auto">
+        <input type="number" class="form-control" id="userFilter" #user>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-dark" (click)="filterPostsByUser(user.value)">Search</button>
+      </div>
+    </div>
+    <table class="table">
+      <caption>JSON placeholder API posts obtained</caption>
+      <thead>
+        <tr>
+          <th scope="col">User</th>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Body</th>
+          <th scope="col">Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts">
+          <th scope="row">{{post.userId}}</th>
+          <td>{{post.id}}</td>
+          <td>{{post.title}}</td>
+          <td>{{post.body}}</td>
+          <td><button type="button" class="btn btn-dark" routerLink="/edit_post" [queryParams]="{id: post.id}">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
 </div>

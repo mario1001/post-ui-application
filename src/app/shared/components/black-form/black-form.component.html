@@ -8,15 +8,20 @@
 </form>
 
 <!-- Modal -->
-<div class="modal fade" id="operationCompleted" tabindex="-1" aria-labelledby="operationCompletedLabel" aria-hidden="true">
+<div class="modal fade" id="dataReflected" tabindex="-1" aria-labelledby="dataReflectedLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="operationCompletedLabel">Creation completed!</h5>
+        <h5 class="modal-title" id="dataReflectedLabel">Data received!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Creation post operation was successfully completed</p>
+        <ul class="list-group" *ngIf="data != null">
+          <li class="list-group-item">ID: {{data.id}}</li>
+          <li class="list-group-item">User ID: {{data.userId}}</li>
+          <li class="list-group-item">Title: {{data.title}}</li>
+          <li class="list-group-item">Body: {{data.body}}</li>
+        </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
