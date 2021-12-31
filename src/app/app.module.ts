@@ -4,13 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PostsComponent } from './modules/posts/search/search-posts.component';
 import { CreatePostComponent } from './modules/posts/create-post/create-post.component';
 import { EditPostComponent } from './modules/posts/edit-post/edit-post.component';
 import { MainComponent } from './modules/main/main.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,14 +18,14 @@ import { MainComponent } from './modules/main/main.component';
     PostsComponent,
     CreatePostComponent,
     EditPostComponent,
-    MainComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [

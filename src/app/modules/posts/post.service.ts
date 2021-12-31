@@ -1,6 +1,6 @@
 import { Post } from './post.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -15,6 +15,9 @@ export class PostService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=UTF-8' })
   };
+
+  // This data will be up when requests are made for modal as information provided by API
+  data = new EventEmitter<Post>();
 
   constructor(private http: HttpClient) {}
 

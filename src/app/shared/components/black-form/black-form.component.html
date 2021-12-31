@@ -1,0 +1,26 @@
+<form class="full-form" role="search-posts" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <h4>{{formTitle}}</h4>
+  <div class="mb-3" *ngFor="let input of inputs">
+    <label [for]="input" class="form-label">{{input | titlecase}}</label>
+    <input type="text" class="form-control" [id]="input" [formControlName]="input">
+  </div>
+  <button type="submit" [disabled]="!postForm.valid" class="btn btn-dark">{{formSubmitButtonText}}</button>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="operationCompleted" tabindex="-1" aria-labelledby="operationCompletedLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="operationCompletedLabel">Creation completed!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Creation post operation was successfully completed</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
