@@ -31,6 +31,6 @@ describe('MainComponent', () => {
   it('should render title', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('post-ui-application is running!');
+    expect(compiled.querySelector('.content h4')?.textContent).toContain('post-ui-application is running!');
   });
 });
