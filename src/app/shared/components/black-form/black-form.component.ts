@@ -40,7 +40,7 @@ export class BlackFormComponent implements OnInit {
       console.log(data);
       this.data = data;
 
-      const element = document.getElementById('dataReflected') as HTMLElement;
+      const element = document.getElementById('dataReflected');
       const myModal = new Modal(element);
       myModal.show();
 
