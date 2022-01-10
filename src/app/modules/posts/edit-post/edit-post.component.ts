@@ -35,7 +35,7 @@ export class EditPostComponent implements OnInit {
           // Show the data retrieved from API (let user modify fields)
           this.postService.getPost(postId).subscribe(data => {
             this.post = data;
-            this.postService.dataReflected.emit(data);
+            this.postService.dataReflected.next(data);
           });
         } else {
           // Just display for getting the post ID ...
@@ -47,6 +47,6 @@ export class EditPostComponent implements OnInit {
 
   onSubmit(post: Post) {
     post.id = this.post.id;
-    this.postService.updatePost(post).subscribe(data => this.postService.dataReflected.emit(data));
+    this.postService.updatePost(post).subscribe(data => this.postService.dataReflected.next(data));
   }
 }

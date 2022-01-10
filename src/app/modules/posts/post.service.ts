@@ -1,7 +1,7 @@
 import { Post } from './post.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, of, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class PostService {
 
   // This data will be up when requests are made for modal as information provided by API
   // Should be updated with subject instead of event emitter (to be done for now)
-  dataReflected = new EventEmitter<Post>();
+  dataReflected = new Subject<Post>();
 
   constructor(private http: HttpClient) {}
 
@@ -78,14 +78,12 @@ export class PostService {
    private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return of(result);
     };
   }
 

@@ -60,12 +60,12 @@ describe('EditPostComponent', () => {
 
     fixture = TestBed.createComponent(EditPostComponent);
     component = fixture.componentInstance;
-    spyOn(fakePostService.dataReflected, 'emit');
+    spyOn(fakePostService.dataReflected, 'next');
 
     fixture.detectChanges();
 
     expect(component).toBeTruthy();
-    expect(fakePostService.dataReflected.emit).toHaveBeenCalled();
+    expect(fakePostService.dataReflected.next).toHaveBeenCalled();
     expect(component.post).toEqual(mockedPostDetail);
   });
 
@@ -104,12 +104,12 @@ describe('EditPostComponent', () => {
     fixture = TestBed.createComponent(EditPostComponent);
     component = fixture.componentInstance;
     component.post = mockedPostUpdated;
-    spyOn(fakePostService.dataReflected, 'emit');
+    spyOn(fakePostService.dataReflected, 'next');
 
     fixture.detectChanges();
     component.onSubmit(mockedPostUpdated);
 
     expect(component).toBeTruthy();
-    expect(fakePostService.dataReflected.emit).toHaveBeenCalled();
+    expect(fakePostService.dataReflected.next).toHaveBeenCalled();
   });
 });

@@ -49,7 +49,7 @@ describe('CreatePostComponent', () => {
   });
 
   it('should run submit function on this component (with mocked service)', () => {
-    spyOn(fakePostService.dataReflected, 'emit');
+    spyOn(fakePostService.dataReflected, 'next');
 
     component.onSubmit(<Post>{
       "userId": 5,
@@ -58,6 +58,6 @@ describe('CreatePostComponent', () => {
     });
     fixture.detectChanges();
 
-    expect(fakePostService.dataReflected.emit).toHaveBeenCalled();
+    expect(fakePostService.dataReflected.next).toHaveBeenCalled();
   });
 });
