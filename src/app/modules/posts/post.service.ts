@@ -17,6 +17,7 @@ export class PostService {
   };
 
   // This data will be up when requests are made for modal as information provided by API
+  // Should be updated with subject instead of event emitter (to be done for now)
   dataReflected = new EventEmitter<Post>();
 
   constructor(private http: HttpClient) {}

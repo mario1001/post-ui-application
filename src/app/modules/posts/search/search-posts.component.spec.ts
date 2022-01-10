@@ -27,7 +27,7 @@ describe('PostsComponent', () => {
 
   beforeEach(async () => {
 
-    // Create fake
+    // Create fake service
     fakePostService = jasmine.createSpyObj<PostService>(
       'PostService',
       {

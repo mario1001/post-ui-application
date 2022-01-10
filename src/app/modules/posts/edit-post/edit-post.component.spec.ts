@@ -30,7 +30,7 @@ describe('EditPostComponent', () => {
 
   beforeEach(() => {
 
-    // Create fake
+    // Create fake service
     fakePostService = jasmine.createSpyObj<PostService>(
       'PostService',
       {
